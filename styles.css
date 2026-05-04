@@ -1,0 +1,362 @@
+/* ============================================
+   GERADOR DE PALETAS DE CORES - ESTILOS
+   Design: Minimalista Horizontal Compacto
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fafafa;
+    color: #1e293b;
+    line-height: 1.5;
+}
+
+/* App Container */
+.app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #fafafa;
+}
+
+/* Header */
+.header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 1rem;
+}
+
+.header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0f172a;
+    letter-spacing: -0.5px;
+}
+
+.generate-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    background-color: #0f172a;
+    color: #ffffff;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.generate-btn:hover {
+    background-color: #1e293b;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.generate-btn:active {
+    transform: scale(0.95);
+}
+
+.icon {
+    width: 0.875rem;
+    height: 0.875rem;
+}
+
+.generate-btn:active .icon {
+    animation: spin 0.6s ease-in-out;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Main Content */
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    gap: 1.5rem;
+}
+
+/* Palette Container */
+.palette-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.palette {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Color Item */
+.color-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Color Block */
+.color-block {
+    width: 80px;
+    height: 80px;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.color-block:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.color-block::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 0.3s ease;
+}
+
+.color-block:hover::after {
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+.copy-icon {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: white;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.color-block:hover .copy-icon {
+    opacity: 1;
+}
+
+/* Color Info */
+.color-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    text-align: center;
+}
+
+.color-hex {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #0f172a;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    border: none;
+    background: none;
+    padding: 0;
+}
+
+.color-hex:hover {
+    color: #64748b;
+}
+
+.color-rgb {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    border: none;
+    background: none;
+    padding: 0;
+}
+
+.color-rgb:hover {
+    color: #1e293b;
+}
+
+/* Hint */
+.hint {
+    text-align: center;
+    color: #94a3b8;
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+.hint kbd {
+    display: inline-block;
+    padding: 0.2rem 0.4rem;
+    background-color: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.25rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: #1e293b;
+}
+
+/* Toast */
+.toast {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background-color: #0f172a;
+    color: #ffffff;
+    padding: 0.875rem 1.25rem;
+    border-radius: 0.375rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    animation: slideInRight 0.3s ease-out;
+    z-index: 1000;
+    font-size: 0.875rem;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.toast.hide {
+    animation: slideOutRight 0.3s ease-out forwards;
+}
+
+@keyframes slideOutRight {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .title {
+        font-size: 1.125rem;
+    }
+
+    .generate-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .palette {
+        gap: 0.5rem;
+    }
+
+    .color-block {
+        width: 100px;
+        height: 100px;
+    }
+
+    .color-hex {
+        font-size: 0.7rem;
+    }
+
+    .color-rgb {
+        font-size: 0.6rem;
+    }
+
+    .toast {
+        bottom: 1rem;
+        right: 1rem;
+        left: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main {
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .palette {
+        gap: 0.4rem;
+    }
+
+    .color-block {
+        width: 80px;
+        height: 80px;
+    }
+
+    .color-hex {
+        font-size: 0.65rem;
+    }
+
+    .color-rgb {
+        font-size: 0.55rem;
+    }
+
+    .hint {
+        font-size: 0.75rem;
+    }
+}
+
+/* Acessibilidade */
+button:focus-visible {
+    outline: 2px solid #0f172a;
+    outline-offset: 2px;
+}
+
+.color-hex:focus-visible,
+.color-rgb:focus-visible {
+    outline: 2px solid #0f172a;
+    outline-offset: 2px;
+}
